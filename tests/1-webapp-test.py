@@ -79,6 +79,8 @@ def test_1_creation_et_completion():
         new_task_list = driver.find_elements(
             By.XPATH, f"""//*[contains(text(),'{text_to_write}')]"""
         )
+        menu = driver.find_elements(By.CSS_SELECTOR, 'nav.menu')
+        assert len(menu) > 0 # ill fail if we are on an invalid page
         assert len(new_task_list) == 0
         # Navigate to the all_tasks view that also contains the completed tasks
         view_all_tasks_link = driver.find_element(By.CSS_SELECTOR, "a.nav-all-tasks")
